@@ -1,0 +1,4 @@
+website: https://training.linuxfoundation.org/cm/LFW212/
+wget --user=NAME --password='PASSWORD' http://url/path/file.name
+wget --load-cookies=cookies.txt --recursive --no-parent --convert-links --backup-converted --adjust-extension --limit-rate=500k https://wiki-to-download
+final command: wget --load-cookies=cookies.txt --recursive --convert-links --backup-converted --adjust-extension --limit-rate=500k --user=LFtraining --password='Penguin2014' https://training.linuxfoundation.org/cm/LFW212/
