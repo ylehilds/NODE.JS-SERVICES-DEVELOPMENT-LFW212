@@ -19,7 +19,10 @@
     "fastify-autoload": "^3.10.0",
     "fastify-cli": "^2.15.0",
     "fastify-plugin": "^3.0.0",
-    "fastify-sensible": "^3.1.2"
+    "fastify-sensible": "^3.1.2",
+    "handlebars": "^4.7.7",
+    "hn-latest-stream": "^1.0.2",
+    "point-of-view": "^5.3.0"
   },
   "devDependencies": {
     "fastify-static": "^4.7.0",
