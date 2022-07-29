@@ -1,19 +1,19 @@
 {
-  "name": "labs-1",
+  "name": "consuming-service",
   "version": "1.0.0",
-  "scripts": {
-    "test": "tap \"test/**/*.test.js\"",
-    "start": "PORT=3000 BOAT_SERVICE_PORT=4000 BRAND_SERVICE_PORT=5001 fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js"
-  },
-  "keywords": [],
-  "license": "UNLICENSED",
   "description": "This project was bootstrapped with Fastify-CLI.",
   "main": "app.js",
   "directories": {
     "test": "test"
   },
+  "scripts": {
+    "test": "tap \"test/**/*.test.js\"",
+    "start": "fastify start -l info app.js",
+    "dev": "fastify start -w -l info -P app.js"
+  },
+  "keywords": [],
   "author": "Lehi Alcantara",
+  "license": "ISC",
   "dependencies": {
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.10.0",
