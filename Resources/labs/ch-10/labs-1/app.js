@@ -13,6 +13,16 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(function (req, res, next) {
+  if (req.socket.remoteAddress === '111.34.55.211') {
+    const err = new Error('Forbidden');
+    err.status = 403;
+    next(err);
+    return;
+  }
+  next();
+});
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
