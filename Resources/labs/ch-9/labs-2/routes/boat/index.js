@@ -9,7 +9,28 @@ const del = promisify(boat.del)
 module.exports = async (fastify, opts) => {
   const { notFound } = fastify.httpErrors
 
-  fastify.post('/', async (request, reply) => {
+  const bodySchema = {
+    type: 'object',
+    required: ['data'],
+    additionalProperties: false,
+    properties: {
+      data: {
+        type: 'object',
+        required: ['brand', 'color'],
+        additionalProperties: false,
+        properties: {
+          brand: {type: 'string'},
+          color: {type: 'string'}
+        }
+      }
+    }
+  }
+
+  fastify.post('/', {
+    schema: {
+      body: bodySchema
+    }
+  }, async (request, reply) => {
     const { data } = request.body
     const id = uid()
     await create(id, data)
