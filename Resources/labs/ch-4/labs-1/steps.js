@@ -6,7 +6,6 @@
 
   const pointOfView = require('point-of-view')
   const handlebars = require('handlebars')
-  const path = require("path");
   ...
   fastify.register(pointOfView, {
     engine: { handlebars },
@@ -33,5 +32,5 @@
 
 // #6 create a route folder call it me and the index.js will be the content of example index.js and modify it as follows:
 //   ...
-  return reply.view(`me.hbs`)
+  return reply.view('me.hbs')
 //   ...
