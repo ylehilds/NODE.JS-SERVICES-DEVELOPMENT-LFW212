@@ -5,4 +5,4 @@
 
 const stream = require('../../stream')
 ...
-return await stream()
+return stream()
