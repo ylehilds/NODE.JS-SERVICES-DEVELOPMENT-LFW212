@@ -6,10 +6,10 @@ module.exports = async function (fastify, opts) {
     const { id } = request.params
     boat.read(id, (err, data) => {
       if (err) {
-        if (err.message === 'not found') reply.notFound()
-        else reply.send(err)
+        if (err.message === 'not found') return reply.notFound()
+        else return reply.send(err)
       }
-      else reply.send(data)
+      else return reply.code(200).send(data)
     })
   })
 }

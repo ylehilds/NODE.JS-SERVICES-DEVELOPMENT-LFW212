@@ -2,6 +2,6 @@
 
 module.exports = async (fastify, opts) => {
   fastify.get('/', async (request, reply) => {
-    return reply.view(`me.hbs`)
+    return reply.code(200).view(`me.hbs`)
   })
 }
