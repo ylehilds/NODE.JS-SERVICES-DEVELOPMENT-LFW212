@@ -11,5 +11,6 @@ module.exports = async function (fastify, opts) {
       }
       else return reply.code(200).send(data)
     })
+    await reply
   })
 }
