@@ -20,8 +20,8 @@
 // using promisify to change callbacks to be promises and working with async/await:
 
 'use strict'
-const {boat} = require('../../model')
-const {promisify} = require('util')
+const { boat } = require('../../model')
+const { promisify } = require('util')
 const read = promisify(boat.read)
 
 module.exports = async function (fastify, opts) {
