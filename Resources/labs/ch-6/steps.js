@@ -1,9 +1,12 @@
-'use strict'
+// #1 install fastify: npm init fastify -- --integrate
+// #2 install dependencies: npm i
+// #3 copy example folder, name it boat under routes
+// #3 import boat from model.js and promisify the callbacks methods you need like this:
 const { boat } = require('../../model')
 const { promisify } = require("util")
 const create = promisify(boat.create)
 const read = promisify(boat.read)
-
+// #4 copy the get method from example folder and implement the boat get & post method like this:
 module.exports = async function (fastify, opts) {
   fastify.get('/:id', async function (request, reply) {
     const { id } = request.params
@@ -27,3 +30,4 @@ module.exports = async function (fastify, opts) {
     }
   })
 }
+// #5 delete example folder as a clean-up step
