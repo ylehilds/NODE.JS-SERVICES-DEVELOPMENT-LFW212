@@ -25,9 +25,8 @@ module.exports = async function (fastify, opts) {
 
   fastify.setNotFoundHandler((request, reply) => {
     if (request.method === 'POST') {
-      reply.status(405)
-      return 'Method Not Allowed\n'
+      return reply.code(405).send('Method Not Allowed')
     }
-    return 'Not Found\n'
+    return reply.code(404).send('Not Found')
   })
 }
