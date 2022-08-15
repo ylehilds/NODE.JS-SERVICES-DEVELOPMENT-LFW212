@@ -3,9 +3,9 @@
 // #3 copy example folder, name it boat under routes
 // #3 import boat from model.js and promisify the callbacks methods you need like this:
 const { boat } = require('../../model')
-const { promisify } = require("util")
-const create = promisify(boat.create)
+const { promisify } = require('util')
 const read = promisify(boat.read)
+const del = promisify(boat.del)
 // #4 copy the get method from example folder and implement the boat get & post method like this:
 module.exports = async function (fastify, opts) {
   fastify.get('/:id', async function (request, reply) {
@@ -18,12 +18,11 @@ module.exports = async function (fastify, opts) {
     }
   })
 
-  fastify.post('/', async function (request, reply) {
-    const { data } = request.body
-    const id = boat.uid()
+  fastify.delete('/:id', async function (request, reply) {
+    const { id } = request.params
     try {
-      await create(id, data)
-      return reply.code(201).send({ id })
+      await del(id)
+      return reply.code(204).send()
     } catch (err) {
       if (err.message === 'not found') return reply.code(404).send('Not Found')
       return reply.send(err)

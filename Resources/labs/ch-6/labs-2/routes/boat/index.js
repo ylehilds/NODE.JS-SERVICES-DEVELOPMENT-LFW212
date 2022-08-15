@@ -5,14 +5,13 @@ const read = promisify(boat.read)
 const del = promisify(boat.del)
 
 module.exports = async function (fastify, opts) {
-  const { notFound } = fastify.httpErrors
   fastify.get('/:id', async function (request, reply) {
     const { id } = request.params
     try {
-      return await read(id)
-    } catch(err) {
-      if (err.message === 'not found') throw notFound()
-      throw err
+      return reply.code(200).send(await read(id))
+    } catch (err) {
+      if (err.message === 'not found') return reply.code(404).send('Not Found')
+      return reply.send(err)
     }
   })
 
@@ -20,10 +19,10 @@ module.exports = async function (fastify, opts) {
     const { id } = request.params
     try {
       await del(id)
-      reply.code(204)
+      return reply.code(204).send()
     } catch (err) {
-      if (err.message === 'not found') throw notFound()
-      throw err
+      if (err.message === 'not found') return reply.code(404).send('Not Found')
+      return reply.send(err)
     }
   })
 }
