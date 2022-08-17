@@ -23,11 +23,11 @@ module.exports = async function (fastify, opts) {
       // the got options is so that we make the requests in the time the lab wants us to and the json() method is to work with payloads in json format for the response
       const boat = await got(`${boatSrv}/${id}`, { timeout:600, retry: 0 }).json()
       const brand = await got(`${brandSrv}/${boat.brand}`, { timeout:600, retry: 0 }).json()
-      return {
+      return reply.code(200).send({
         id: boat.id,
         color: boat.color,
         brand: brand.name
-      }
+      })
     } catch(err) {
       if (!err.response) return reply.send(err) // If the err.response object is not there, then no response occurred but there was still an error.
       if (err.response.statusCode === 404) return reply.code(404).send('Not Found')
