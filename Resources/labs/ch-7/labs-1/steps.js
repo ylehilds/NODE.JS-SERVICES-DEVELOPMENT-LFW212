@@ -1,11 +1,21 @@
-'use strict'
+// #1 install fastify: npm init fastify -- --integrate
+// #2 install dependencies: npm i
+// #3 install dependencies: npm i got@11
+// #4 import got into root route like this:
 const got = require('got')
-
+// #5 the lab demonstrates how we can add environment variables along with the start script in package.json like this:
+// ...
+"start": "PORT=3000 BOAT_SERVICE_PORT=4000 BRAND_SERVICE_PORT=5001 fastify start -l info app.js",
+// ...
+// But for this lab it is not necessary to do this as these ports are set when the services are brought up and are saved as environment variables that the server you're testing to is able to pull the environment variables and work with them.
+// In the root route we pull the environment variables that the test is setting up:
 const { BOAT_SERVICE_PORT, BRAND_SERVICE_PORT } = process.env
-
+// #6 set the services urls to easy work with them, like this:
+...
 const boatSrv = `http://localhost:${BOAT_SERVICE_PORT}`
 const brandSrv = `http://localhost:${BRAND_SERVICE_PORT}`
-
+...
+// #7 set the GET route like this:
 module.exports = async function (fastify, opts) {
   fastify.get('/:id', async function (request, reply) {
     const { id } = request.params
@@ -26,3 +36,5 @@ module.exports = async function (fastify, opts) {
     }
   })
 }
+
+// #8 clean up step delete the example folder in routes folder
