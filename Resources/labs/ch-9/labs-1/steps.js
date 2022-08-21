@@ -1,4 +1,5 @@
 // how to complete this lab:
+// #0 install dependencies, like this: npm i
 // #1 inside setTimeout method pull "un" queryString, like this:
 const { un } = req.query
 // #2 check if "un" query is an array like this:

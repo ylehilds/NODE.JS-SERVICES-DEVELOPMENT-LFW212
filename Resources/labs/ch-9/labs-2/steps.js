@@ -1,4 +1,5 @@
 // how to complete this lab:
+// #0 install dependencies, like this: npm i
 // #1 inside fastify configuration create an object variable to hold the schema rule, call it bodySchema
 // #2 remember trap:
 // t - type
