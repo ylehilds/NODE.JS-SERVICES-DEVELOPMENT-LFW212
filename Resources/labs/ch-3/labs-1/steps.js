@@ -8,7 +8,7 @@ return reply.code(200).send(await data()) // technically you could just "return 
 
 // just a little explanation:
 // there are at least 3 ways (that I know of) a server can respond to requests:
-// 1. return { root: true || 'string'}
+// 1. return { root: true || 'string' || stream}
 // 2. return reply.send({ root: true } || promise/async & await || 'string' || stream)
 // 3. return reply.code(200).send({ root: true } || promise/async & await || 'string' || stream)
 // I believe and tested all of these I just think being explicitly like:
