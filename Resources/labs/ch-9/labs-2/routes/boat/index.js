@@ -26,6 +26,10 @@ module.exports = async (fastify, opts) => {
     }
   }
 
+  const paramsSchema = {
+    id: { type: 'integer'}
+  }
+
   fastify.post('/', {
     schema: {
       body: bodySchema
@@ -49,7 +53,9 @@ module.exports = async (fastify, opts) => {
     }
   })
 
-  fastify.get('/:id', async (request, reply) => {
+  fastify.get('/:id', {schema: {
+    params: paramsSchema
+    }},async (request, reply) => {
     const { id } = request.params
     try { 
       return await read(id)
