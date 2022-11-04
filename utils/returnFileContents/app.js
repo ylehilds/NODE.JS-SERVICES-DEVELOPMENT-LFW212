@@ -2,10 +2,13 @@
 
 const path = require('path')
 const AutoLoad = require('fastify-autoload')
+const fastifyStatic = require('fastify-static')
 
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
-
+  fastify.register(fastifyStatic, {
+    root: path.join(__dirname, 'public')
+  })
   // Do not touch the following lines
 
   // This loads all plugins defined in plugins
